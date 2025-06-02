@@ -14,6 +14,57 @@
       color: #f5f5f5;
     }
 
+    .registro-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .registro-formulario {
+      background: #1e1e2f;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+      width: 300px;
+    }
+
+    .registro-formulario h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00ffff;
+    }
+
+    .registro-formulario input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .registro-formulario button {
+      width: 100%;
+      padding: 10px;
+      background: #00b894;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .registro-formulario button:hover {
+      background: #098b6c;
+    }
+
+    /* Resto de tu CSS original (encabezado, catálogo, botones, etc.) */
     .encabezado {
       background: linear-gradient(to right, #000428, #004e92);
       padding: 1rem 2rem;
@@ -157,6 +208,18 @@
 </head>
 <body>
 
+  <!-- FORMULARIO DE REGISTRO -->
+  <div id="registro" class="registro-overlay">
+    <form class="registro-formulario" onsubmit="return validarRegistro()">
+      <h2>Registro</h2>
+      <input type="text" id="nombre" placeholder="Nombre completo" required />
+      <input type="email" id="correo" placeholder="Correo electrónico" required />
+      <input type="password" id="clave" placeholder="Contraseña" required />
+      <button type="submit">Ingresar</button>
+    </form>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
   <header class="encabezado">
     <div class="logo">
       <img src="logo.png" alt="Logotipo de la tienda" />
@@ -175,33 +238,136 @@
   </div>
 
   <!-- Catálogo de perfumes -->
-  <div id="dulces" class="catalogo">
-    <div class="producto"><img src="paul.jpg" alt=""><h3>Jean Paul Gaultier Le Male</h3><p>$2433.30</p><button onclick="agregarAlCarrito('Jean Paul Gaultier Le Male', 2433.30)">Agregar al carrito</button></div>
-    <div class="producto"><img src="eros.jpg" alt=""><h3>Versace Eros</h3><p>$659.00</p><button onclick="agregarAlCarrito('Versace Eros', 659.00)">Agregar al carrito</button></div>
-    <div class="producto"><img src="homme.jpg" alt=""><h3>YSL La Nuit de l’Homme</h3><p>$2910.00</p><button onclick="agregarAlCarrito('YSL La Nuit de l’Homme', 2910.00)">Agregar al carrito</button></div>
-    <div class="producto"><img src="one.jpg" alt=""><h3>One Million</h3><p>$1399.00</p><button onclick="agregarAlCarrito('One Million', 1399.00)">Agregar al carrito</button></div>
-  </div>
+ <!-- Catálogo de perfumes -->
 
-  <div id="amaderados" class="catalogo">
-    <div class="producto"><img src="sauvage.jpg" alt=""><h3>Dior Sauvage</h3><p>$1470.00</p><button onclick="agregarAlCarrito('Dior Sauvage', 1470.00)">Agregar al carrito</button></div>
-    <div class="producto"><img src="hermes.jpg" alt=""><h3>Terre d’Hermès</h3><p>$5780.00</p><button onclick="agregarAlCarrito('Terre d’Hermès', 5780.00)">Agregar al carrito</button></div>
-    <div class="producto"><img src="bleu.jpg" alt=""><h3>Bleu de Chanel</h3><p>$599.70</p><button onclick="agregarAlCarrito('Bleu de Chanel', 599.70)">Agregar al carrito</button></div>
-    <div class="producto"><img src="code.jpg" alt=""><h3>Armani Code</h3><p>$1447.00</p><button onclick="agregarAlCarrito('Armani Code', 1447.00)">Agregar al carrito</button></div>
+<!-- Dulces -->
+<div id="dulces" class="catalogo">
+  <div class="producto">
+    <img src="paul.jpg" alt="">
+    <h3>Jean Paul Gaultier Le Male</h3>
+    <p class="descripcion">Dulce, especiado y muy seductor. Ideal para la noche.</p>
+    <p>$2433.30</p>
+    <button onclick="agregarAlCarrito('Jean Paul Gaultier Le Male', 2433.30)">Agregar al carrito</button>
   </div>
+  <div class="producto">
+    <img src="eros.jpg" alt="">
+    <h3>Versace Eros</h3>
+    <p class="descripcion">Aroma vibrante y dulce con menta, manzana y vainilla.</p>
+    <p>$659.00</p>
+    <button onclick="agregarAlCarrito('Versace Eros', 659.00)">Agregar al carrito</button>
+  </div>
+  <div class="producto">
+    <img src="homme.jpg" alt="">
+    <h3>YSL La Nuit de l’Homme</h3>
+    <p class="descripcion">Cardamomo dulce con elegancia nocturna y misteriosa.</p>
+    <p>$2910.00</p>
+    <button onclick="agregarAlCarrito('YSL La Nuit de l’Homme', 2910.00)">Agregar al carrito</button>
+  </div>
+  <div class="producto">
+    <img src="one.jpg" alt="">
+    <h3>One Million</h3>
+    <p class="descripcion">Canela, cuero y ámbar. Un clásico dulce muy llamativo.</p>
+    <p>$1399.00</p>
+    <button onclick="agregarAlCarrito('One Million', 1399.00)">Agregar al carrito</button>
+  </div>
+</div>
 
-  <div id="frescos" class="catalogo">
-    <div class="producto"><img src="aqua.jpg" alt=""><h3>Aqua di Gio</h3><p>$684.00</p><button onclick="agregarAlCarrito('Aqua di Gio', 684.00)">Agregar al carrito</button></div>
-    <div class="producto"><img src="nautica.jpg" alt=""><h3>Nautica Voyage</h3><p>$226.00</p><button onclick="agregarAlCarrito('Nautica Voyage', 226.00)">Agregar al carrito</button></div>
-    <div class="producto"><img src="ckone.jpg" alt=""><h3>CK One</h3><p>$501.00</p><button onclick="agregarAlCarrito('CK One', 501.00)">Agregar al carrito</button></div>
-    <div class="producto"><img src="fraiche.jpg" alt=""><h3>Y Eau Fraiche</h3><p>$2980.00</p><button onclick="agregarAlCarrito('Y Eau Fraiche', 2980.00)">Agregar al carrito</button></div>
+<!-- Amaderados -->
+<div id="amaderados" class="catalogo">
+  <div class="producto">
+    <img src="sauvage.jpg" alt="">
+    <h3>Dior Sauvage</h3>
+    <p class="descripcion">Fuerte, fresco y amaderado. Aroma moderno y masculino.</p>
+    <p>$1470.00</p>
+    <button onclick="agregarAlCarrito('Dior Sauvage', 1470.00)">Agregar al carrito</button>
   </div>
+  <div class="producto">
+    <img src="hermes.jpg" alt="">
+    <h3>Terre d’Hermès</h3>
+    <p class="descripcion">Notas de vetiver, naranja y madera. Elegancia natural.</p>
+    <p>$5780.00</p>
+    <button onclick="agregarAlCarrito('Terre d’Hermès', 5780.00)">Agregar al carrito</button>
+  </div>
+  <div class="producto">
+    <img src="bleu.jpg" alt="">
+    <h3>Bleu de Chanel</h3>
+    <p class="descripcion">Refinado y versátil. Notas cítricas sobre fondo amaderado.</p>
+    <p>$599.70</p>
+    <button onclick="agregarAlCarrito('Bleu de Chanel', 599.70)">Agregar al carrito</button>
+  </div>
+  <div class="producto">
+    <img src="code.jpg" alt="">
+    <h3>Armani Code</h3>
+    <p class="descripcion">Especias, cuero y madera. Ideal para ocasiones elegantes.</p>
+    <p>$1447.00</p>
+    <button onclick="agregarAlCarrito('Armani Code', 1447.00)">Agregar al carrito</button>
+  </div>
+</div>
 
-  <div id="cítricos" class="catalogo">
-    <div class="producto"><img src="dolce.jpg" alt=""><h3>Dolce & Gabbana Light Blue</h3><p>$630.00</p><button onclick="agregarAlCarrito('Dolce & Gabbana Light Blue', 630.00)">Agregar al carrito</button></div>
-    <div class="producto"><img src="happy.jpg" alt=""><h3>Clinique Happy for Men</h3><p>$599.00</p><button onclick="agregarAlCarrito('Clinique Happy for Men', 599.00)">Agregar al carrito</button></div>
-    <div class="producto"><img src="acqua.jpg" alt=""><h3>Acqua Di Parma Colonia</h3><p>$1637.07</p><button onclick="agregarAlCarrito('Acqua Di Parma Colonia', 1637.07)">Agregar al carrito</button></div>
-    <div class="producto"><img src="summer.jpg" alt=""><h3>CK Summer</h3><p>$932.00</p><button onclick="agregarAlCarrito('CK Summer', 932.00)">Agregar al carrito</button></div>
+<!-- Frescos -->
+<div id="frescos" class="catalogo">
+  <div class="producto">
+    <img src="aqua.jpg" alt="">
+    <h3>Aqua di Gio</h3>
+    <p class="descripcion">Acuático y limpio. Un clásico para uso diario.</p>
+    <p>$684.00</p>
+    <button onclick="agregarAlCarrito('Aqua di Gio', 684.00)">Agregar al carrito</button>
   </div>
+  <div class="producto">
+    <img src="nautica.jpg" alt="">
+    <h3>Nautica Voyage</h3>
+    <p class="descripcion">Fresco, verde y frutal. Excelente para clima cálido.</p>
+    <p>$226.00</p>
+    <button onclick="agregarAlCarrito('Nautica Voyage', 226.00)">Agregar al carrito</button>
+  </div>
+  <div class="producto">
+    <img src="ckone.jpg" alt="">
+    <h3>CK One</h3>
+    <p class="descripcion">Unisex, limpio y cítrico. Muy versátil y juvenil.</p>
+    <p>$501.00</p>
+    <button onclick="agregarAlCarrito('CK One', 501.00)">Agregar al carrito</button>
+  </div>
+  <div class="producto">
+    <img src="fraiche.jpg" alt="">
+    <h3>Y Eau Fraiche</h3>
+    <p class="descripcion">Versión fresca del original, ideal para el día.</p>
+    <p>$2980.00</p>
+    <button onclick="agregarAlCarrito('Y Eau Fraiche', 2980.00)">Agregar al carrito</button>
+  </div>
+</div>
+
+<!-- Cítricos -->
+<div id="cítricos" class="catalogo">
+  <div class="producto">
+    <img src="dolce.jpg" alt="">
+    <h3>Dolce & Gabbana Light Blue</h3>
+    <p class="descripcion">Cítrico, fresco y mediterráneo. Perfecto para el verano.</p>
+    <p>$630.00</p>
+    <button onclick="agregarAlCarrito('Dolce & Gabbana Light Blue', 630.00)">Agregar al carrito</button>
+  </div>
+  <div class="producto">
+    <img src="happy.jpg" alt="">
+    <h3>Clinique Happy for Men</h3>
+    <p class="descripcion">Mandarina y lima con fondo ligero y alegre.</p>
+    <p>$599.00</p>
+    <button onclick="agregarAlCarrito('Clinique Happy for Men', 599.00)">Agregar al carrito</button>
+  </div>
+  <div class="producto">
+    <img src="acqua.jpg" alt="">
+    <h3>Acqua Di Parma Colonia</h3>
+    <p class="descripcion">Cítricos clásicos y elegantes, muy refinado.</p>
+    <p>$1637.07</p>
+    <button onclick="agregarAlCarrito('Acqua Di Parma Colonia', 1637.07)">Agregar al carrito</button>
+  </div>
+  <div class="producto">
+    <img src="summer.jpg" alt="">
+    <h3>CK Summer</h3>
+    <p class="descripcion">Versión veraniega con frutas tropicales y cítricos.</p>
+    <p>$932.00</p>
+    <button onclick="agregarAlCarrito('CK Summer', 932.00)">Agregar al carrito</button>
+  </div>
+</div>
+
 
   <!-- Carrito -->
   <div id="carrito">
@@ -217,10 +383,10 @@
 
   <footer>
     <p>Síguenos en nuestras redes sociales:</p>
-    <a href="https://www.facebook.com/share/16JMovXdgk/" target="_blank">📘 Facebook</a>
-    <a href="https://www.instagram.com/a.lexpio?igsh=MW45c3ZzdXZsOTh1aA==" target="_blank">📸 Instagram</a>
-    <p>Teléfono: 2941336494</p>
-    <p>Dirección: Santiago Tuxtla, Ver. Calle 1ra de mayo</p>
+    <a href="https://www.facebook.com/share/19HuHZYudG/" target="_blank">📘 Facebook</a>
+    <a href="https://www.instagram.com/jame.son6172?igsh=ZzZiODR4OHB6YnZ6" target="_blank">📸 Instagram</a>
+    <p>Teléfono: 2942882359</p>
+    <p>Dirección: Santiago Tuxtla, Ver. Calle: el marquez</p>
   </footer>
 
   <script>
@@ -289,7 +455,24 @@
       document.getElementById('carrito').style.display = 'none';
     }
 
-    window.onload = () => mostrarTodos();
+    function validarRegistro() {
+      const nombre = document.getElementById('nombre').value.trim();
+      const correo = document.getElementById('correo').value.trim();
+      const clave = document.getElementById('clave').value.trim();
+
+      if (nombre && correo && clave) {
+        document.getElementById('registro').style.display = 'none';
+        mostrarTodos();
+        return false;
+      } else {
+        alert('Por favor completa todos los campos.');
+        return false;
+      }
+    }
+
+    window.onload = () => {
+      document.getElementById('registro').style.display = 'flex';
+    }
   </script>
 
 </body>
